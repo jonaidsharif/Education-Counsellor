@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jonaid Bin Sharif — Education Counsellor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ─── TOKENS ─────────────────────────────────────────── */
+:root {
+  --bg:        #0b0d12;
+  --bg-card:   #111318;
+  --bg-card2:  #161920;
+  --border:    rgba(255,255,255,0.07);
+  --border-hi: rgba(255,255,255,0.13);
+  --text:      #e2e4ef;
+  --text2:     #8b91ab;
+  --text3:     #4a5068;
+  --accent:    #4a9eff;
+  --accent-d:  #1a6fe8;
+  --accent-g:  rgba(74,158,255,0.12);
+  --accent-g2: rgba(74,158,255,0.06);
+  --green:     #34d399;
+  --amber:     #f59e0b;
+  --red:       #f87171;
+  --nav-h:     64px;
+  --nav-bg:    rgba(11,13,18,0.85);
+  --r:         10px;
+  --r2:        14px;
+  --mono:      'JetBrains Mono', monospace;
+  --sans:      'Inter', sans-serif;
+  --display:   'Syne', sans-serif;
+}
+[data-theme="light"] {
+  --bg:        #f4f5f9;
+  --bg-card:   #ffffff;
+  --bg-card2:  #eef0f7;
+  --border:    rgba(0,0,0,0.07);
+  --border-hi: rgba(0,0,0,0.13);
+  --text:      #0d0f1a;
+  --text2:     #4a5068;
+  --text3:     #9aa0bc;
+  --accent:    #1a6fe8;
+  --accent-g:  rgba(26,111,232,0.1);
+  --accent-g2: rgba(26,111,232,0.05);
+  --nav-bg:    rgba(244,245,249,0.9);
+}
+
+/* ─── RESET ───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+  transition: background .3s, color .3s;
+}
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+/* ─── NAV ─────────────────────────────────────────────── */
+#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+  height: var(--nav-h);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 4rem;
+  background: var(--nav-bg);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: background .3s;
+}
+.logo {
+  font-family: var(--display);
+  font-size: 1.4rem; font-weight: 800;
+  color: var(--text); text-decoration: none;
+  letter-spacing: -.02em;
+}
+.logo span { color: var(--accent); }
+.nav-links {
+  display: flex; gap: .25rem; list-style: none;
+}
+.nav-links a {
+  font-size: .78rem; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--text2); text-decoration: none;
+  padding: .4rem .85rem; border-radius: 6px;
+  transition: color .2s, background .2s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--accent); background: var(--accent-g2); }
+.nav-actions { display: flex; align-items: center; gap: .75rem; }
+#theme-toggle {
+  background: var(--bg-card); border: 1px solid var(--border-hi);
+  border-radius: 8px; width: 38px; height: 38px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 1rem; transition: border-color .2s;
+}
+#theme-toggle:hover { border-color: var(--accent); }
+.btn-talk {
+  padding: .45rem 1.3rem; background: var(--accent); color: #fff;
+  font-size: .8rem; font-weight: 600; letter-spacing: .08em;
+  border-radius: 8px; text-decoration: none;
+  transition: opacity .2s, transform .2s;
+  box-shadow: 0 0 20px rgba(74,158,255,.25);
+}
+.btn-talk:hover { opacity: .88; transform: translateY(-1px); }
+
+/* ─── HERO ────────────────────────────────────────────── */
+#hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  padding: calc(var(--nav-h) + 5rem) 2rem 5rem;
+  position: relative; overflow: hidden;
+}
+.hero-glow {
+  position: absolute; pointer-events: none;
+  width: 800px; height: 600px;
+  background: radial-gradient(ellipse, rgba(74,158,255,.1) 0%, transparent 70%);
+  top: 10%; left: 50%; transform: translateX(-50%);
+}
+.hero-grid-bg {
+  position: absolute; inset: 0; pointer-events: none; opacity: .025;
+  background-image: linear-gradient(var(--accent) 1px, transparent 1px),
+                    linear-gradient(90deg, var(--accent) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-family: var(--mono); font-size: .72rem; font-weight: 500;
+  letter-spacing: .14em; color: var(--accent);
+  background: var(--accent-g); border: 1px solid rgba(74,158,255,.28);
+  padding: .35rem 1rem; border-radius: 50px; margin-bottom: 2rem;
+  animation: fadeDown .7s ease both;
+}
+.hero-eyebrow::before { content: "●"; font-size: .45rem; animation: blink 2s infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
+@keyframes fadeDown { from{opacity:0;transform:translateY(-16px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeUp   { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn   { from{opacity:0} to{opacity:1} }
+
+.hero-name {
+  font-family: var(--display);
+  font-size: clamp(3.8rem, 9vw, 8rem);
+  font-weight: 800; line-height: .95;
+  letter-spacing: -.04em; color: var(--text);
+  margin-bottom: .6rem;
+  animation: fadeUp .85s ease .1s both;
+}
+.hero-name .hi { color: var(--accent); }
+
+.hero-roles {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem;
+  margin: 1.6rem 0 1.8rem;
+  animation: fadeUp .85s ease .25s both;
+}
+.role-chip {
+  font-size: .78rem; font-weight: 500;
+  padding: .3rem .85rem; border-radius: 6px;
+  border: 1px solid var(--border-hi); color: var(--text2);
+  background: var(--bg-card);
+}
+.role-chip.hi { border-color: var(--accent); color: var(--accent); background: var(--accent-g2); }
+
+.hero-tagline {
+  font-size: 1.05rem; color: var(--text2); font-weight: 300;
+  max-width: 600px; margin: 0 auto 1.5rem; line-height: 1.85;
+  animation: fadeUp .85s ease .38s both;
+}
+.hero-tagline strong { color: var(--text); font-weight: 500; }
+
+.hero-bullets {
+  list-style: none; display: flex; flex-direction: column; gap: .55rem;
+  text-align: left; max-width: 500px; margin: 0 auto 2.8rem;
+  animation: fadeUp .85s ease .48s both;
+}
+.hero-bullets li {
+  display: flex; align-items: flex-start; gap: .75rem;
+  font-size: .9rem; color: var(--text2); line-height: 1.6;
+}
+.hero-bullets li .bi { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+
+.hero-btns {
+  display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+  animation: fadeUp .85s ease .56s both;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .75rem 2rem; background: var(--accent); color: #fff;
+  font-size: .88rem; font-weight: 600; border-radius: var(--r);
+  text-decoration: none;
+  box-shadow: 0 4px 24px rgba(74,158,255,.3);
+  transition: transform .2s, box-shadow .2s;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(74,158,255,.4); }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .75rem 2rem; background: var(--bg-card);
+  border: 1px solid var(--border-hi); color: var(--text);
+  font-size: .88rem; font-weight: 500; border-radius: var(--r);
+  text-decoration: none; transition: border-color .2s, color .2s, transform .2s;
+}
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+.hero-stats {
+  display: flex; justify-content: center; gap: 4rem;
+  margin-top: 4.5rem; padding-top: 3rem;
+  border-top: 1px solid var(--border);
+  animation: fadeIn 1s ease .75s both;
+}
+.hstat-num {
+  font-family: var(--display);
+  font-size: 2.8rem; font-weight: 800; color: var(--accent); line-height: 1;
+}
+.hstat-num sup { font-size: 1.3rem; }
+.hstat-label {
+  font-family: var(--mono); font-size: .68rem; color: var(--text3);
+  letter-spacing: .1em; text-transform: uppercase; margin-top: 5px;
+}
+.hero-socials {
+  display: flex; gap: .75rem; justify-content: center; margin-top: 2rem;
+  animation: fadeIn 1s ease .9s both;
+}
+.soc-link {
+  display: flex; align-items: center; gap: .4rem;
+  font-size: .78rem; color: var(--text3); text-decoration: none;
+  padding: .35rem .8rem; border: 1px solid var(--border);
+  border-radius: 6px; transition: color .2s, border-color .2s;
+}
+.soc-link:hover { color: var(--accent); border-color: var(--accent); }
+.scroll-hint {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  font-family: var(--mono); font-size: .68rem; color: var(--text3);
+  letter-spacing: .2em; text-transform: uppercase;
+  display: flex; flex-direction: column; align-items: center; gap: .5rem;
+  animation: fadeIn 1.5s ease 1.2s both;
+}
+.scroll-hint::after {
+  content: ''; width: 1px; height: 40px;
+  background: linear-gradient(to bottom, var(--text3), transparent);
+  animation: scrollLine 2s ease-in-out infinite;
+}
+@keyframes scrollLine { 0%,100%{transform:scaleY(1);opacity:1} 50%{transform:scaleY(.5);opacity:.4} }
+
+/* ─── SECTIONS ────────────────────────────────────────── */
+.section {
+  padding: 7rem 4rem;
+  border-top: 1px solid var(--border);
+}
+.section:nth-child(even) { background: var(--bg-card2); }
+.wrap { max-width: 1100px; margin: 0 auto; }
+
+.sec-tag {
+  display: flex; align-items: center; gap: .7rem;
+  font-family: var(--mono); font-size: .7rem;
+  color: var(--accent); font-weight: 500; letter-spacing: .18em;
+  text-transform: uppercase; margin-bottom: .9rem;
+}
+.sec-tag-num { color: var(--text3); }
+.sec-h {
+  font-family: var(--display);
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-weight: 800; line-height: 1.0;
+  letter-spacing: -.03em; color: var(--text); margin-bottom: .8rem;
+}
+.sec-sub { font-size: .97rem; color: var(--text2); max-width: 500px; line-height: 1.85; }
+.sec-head { margin-bottom: 3.5rem; }
+
+/* ─── ABOUT ───────────────────────────────────────────── */
+.about-grid {
+  display: grid; grid-template-columns: 1.15fr 1fr; gap: 5rem; align-items: start;
+}
+.about-body { font-size: .97rem; color: var(--text2); line-height: 1.9; }
+.about-body p + p { margin-top: 1.1rem; }
+.about-body strong { color: var(--text); font-weight: 500; }
+.about-feats { display: flex; flex-direction: column; gap: .75rem; margin-top: 2rem; }
+.feat-row {
+  display: flex; align-items: flex-start; gap: .9rem;
+  padding: .9rem 1.1rem; background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: var(--r);
+  transition: border-color .2s;
+}
+.feat-row:hover { border-color: var(--accent); }
+.feat-ico { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+.feat-ttl { font-size: .88rem; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+.feat-sub { font-size: .78rem; color: var(--text3); }
+
+.about-right { display: flex; flex-direction: column; gap: 1rem; }
+.stat-big {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--r2); padding: 1.5rem 1.8rem;
+  transition: border-color .2s, transform .2s;
+}
+.stat-big:hover { border-color: var(--accent); transform: translateX(5px); }
+.stat-big-num {
+  font-family: var(--display); font-size: 3rem;
+  font-weight: 800; color: var(--accent); line-height: 1;
+}
+.stat-big-lbl { font-size: .78rem; color: var(--text3); letter-spacing: .06em; margin-top: 4px; }
+.stat-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+}
+.stat-sm {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--r2); padding: 1.3rem;
+  text-align: center; transition: border-color .2s;
+}
+.stat-sm:hover { border-color: var(--accent); }
+.stat-sm-num {
+  font-family: var(--display); font-size: 2rem;
+  font-weight: 800; color: var(--accent); line-height: 1;
+}
+.stat-sm-lbl { font-size: .72rem; color: var(--text3); margin-top: 4px; }
+.edu-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--r2); padding: 1.3rem 1.5rem;
+}
+.edu-deg { font-size: .95rem; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+.edu-inst { font-size: .83rem; color: var(--text2); }
+.edu-meta { font-family: var(--mono); font-size: .72rem; color: var(--accent); margin-top: 6px; }
+
+/* ─── SKILLS ──────────────────────────────────────────── */
+.skills-headline {
+  font-family: var(--mono); font-size: .75rem; color: var(--text2);
+  letter-spacing: .1em; text-transform: uppercase; margin-bottom: 2rem;
+  padding-bottom: 1rem; border-bottom: 1px solid var(--border);
+}
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1rem; }
+.sk-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--r2); padding: 1.6rem;
+  transition: border-color .2s, transform .2s;
+}
+.sk-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+.sk-head { display: flex; align-items: center; gap: .9rem; margin-bottom: 1.2rem; }
+.sk-ico {
+  width: 42px; height: 42px; border-radius: 9px;
+  background: var(--accent-g); border: 1px solid rgba(74,158,255,.2);
+  display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+}
+.sk-title { font-size: .93rem; font-weight: 600; color: var(--text); }
+.sk-role { font-family: var(--mono); font-size: .68rem; color: var(--accent); letter-spacing: .08em; }
+.sk-tags { display: flex; flex-wrap: wrap; gap: .45rem; }
+.sk-tag {
+  font-family: var(--mono); font-size: .72rem;
+  padding: .28rem .65rem; background: var(--bg);
+  border: 1px solid var(--border-hi); border-radius: 5px; color: var(--text2);
+  transition: border-color .2s, color .2s;
+}
+.sk-tag:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ─── CASE STUDIES (= Projects) ──────────────────────── */
+.cases { display: flex; flex-direction: column; gap: 2rem; }
+.case-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--r2); overflow: hidden;
+  transition: border-color .2s;
+}
+.case-card:hover { border-color: var(--accent); }
+.case-top {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .7rem 1.6rem; background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  font-family: var(--mono); font-size: .7rem; color: var(--text3);
+  letter-spacing: .1em; text-transform: uppercase;
+}
+.case-top-tag {
+  padding: .22rem .7rem; border-radius: 50px;
+  font-size: .65rem; font-weight: 500; letter-spacing: .08em;
+}
+.tag-blue { background: var(--accent-g); color: var(--accent); border: 1px solid rgba(74,158,255,.3); }
+.tag-green { background: rgba(52,211,153,.1); color: var(--green); border: 1px solid rgba(52,211,153,.3); }
+.tag-amber { background: rgba(245,158,11,.1); color: var(--amber); border: 1px solid rgba(245,158,11,.3); }
+.case-body { padding: 2rem; }
+.case-title {
+  font-family: var(--display); font-size: 1.55rem;
+  font-weight: 700; color: var(--text); margin-bottom: .6rem;
+  letter-spacing: -.02em;
+}
+.case-sub { font-size: .88rem; color: var(--text2); margin-bottom: 1.5rem; line-height: 1.7; }
+.case-points { list-style: none; display: flex; flex-direction: column; gap: .55rem; margin-bottom: 1.8rem; }
+.case-points li {
+  display: flex; align-items: flex-start; gap: .7rem;
+  font-size: .9rem; color: var(--text2); line-height: 1.65;
+}
+.case-points li strong { color: var(--text); font-weight: 500; }
+.case-points li::before { content: "▸"; color: var(--accent); flex-shrink: 0; font-size: .85rem; margin-top: 3px; }
+.case-tech { display: flex; flex-wrap: wrap; gap: .45rem; margin-bottom: 1.8rem; }
+.case-tech span {
+  font-family: var(--mono); font-size: .72rem;
+  padding: .28rem .65rem; background: var(--bg);
+  border: 1px solid var(--border-hi); border-radius: 5px; color: var(--text2);
+}
+.case-metrics { display: flex; gap: 2rem; flex-wrap: wrap; padding-top: 1.4rem; border-top: 1px solid var(--border); }
+.cm { text-align: center; min-width: 80px; }
+.cm-num {
+  font-family: var(--display); font-size: 1.7rem;
+  font-weight: 800; color: var(--accent); line-height: 1;
+  display: flex; align-items: baseline; gap: 2px;
+}
+.cm-num sup { font-size: .9rem; }
+.cm-label { font-family: var(--mono); font-size: .65rem; color: var(--text3); margin-top: 3px; letter-spacing: .06em; }
+.cm-sub { font-size: .72rem; color: var(--text3); margin-top: 1px; }
+
+/* ─── EXPERIENCE ──────────────────────────────────────── */
+.exp-company-block {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--r2); padding: 2rem; margin-bottom: 2.5rem;
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 2rem;
+}
+.exp-co-name {
+  font-family: var(--display); font-size: 1.3rem;
+  font-weight: 800; letter-spacing: .04em; color: var(--text);
+}
+.exp-co-desc { font-size: .85rem; color: var(--text2); margin-top: .4rem; max-width: 520px; line-height: 1.7; }
+.exp-co-meta {
+  font-family: var(--mono); font-size: .72rem; color: var(--accent);
+  letter-spacing: .1em; white-space: nowrap; text-align: right;
+  flex-shrink: 0;
+}
+.exp-timeline { position: relative; padding-left: 2px; }
+.exp-line {
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent) 60%, transparent);
+}
+.exp-item {
+  position: relative; padding-left: 2.5rem; padding-bottom: 3rem;
+}
+.exp-dot {
+  position: absolute; left: -6px; top: 8px;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--accent); border: 3px solid var(--bg);
+  box-shadow: 0 0 12px rgba(74,158,255,.5);
+}
+.exp-date {
+  font-family: var(--mono); font-size: .72rem;
+  color: var(--accent); letter-spacing: .12em;
+  text-transform: uppercase; margin-bottom: .45rem;
+}
+.exp-role {
+  font-family: var(--display); font-size: 1.35rem;
+  font-weight: 700; color: var(--text); margin-bottom: .2rem; letter-spacing: -.01em;
+}
+.exp-org { font-size: .85rem; color: var(--text3); margin-bottom: .9rem; }
+.exp-badges { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
+.exp-badge {
+  font-family: var(--mono); font-size: .65rem; font-weight: 500;
+  padding: .22rem .65rem; border-radius: 50px; letter-spacing: .06em;
+}
+.exp-points { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+.exp-points li {
+  display: flex; align-items: flex-start; gap: .7rem;
+  font-size: .9rem; color: var(--text2); line-height: 1.65;
+}
+.exp-points li::before { content: "→"; color: var(--accent); flex-shrink: 0; font-size: .82rem; margin-top: 4px; }
+.exp-achieve {
+  margin-top: 1.2rem; padding: 1rem 1.3rem;
+  background: rgba(74,158,255,.05); border: 1px solid rgba(74,158,255,.18);
+  border-radius: var(--r);
+}
+.exp-achieve-lbl {
+  font-family: var(--mono); font-size: .65rem; color: var(--accent);
+  font-weight: 600; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 6px;
+}
+.exp-achieve p { font-size: .85rem; color: var(--text2); line-height: 1.65; }
+
+/* ─── EDUCATION ───────────────────────────────────────── */
+.edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.2rem; }
+.edu-big {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--r2); padding: 2rem;
+  display: flex; align-items: flex-start; gap: 1.2rem;
+  transition: border-color .2s;
+}
+.edu-big:hover { border-color: var(--accent); }
+.edu-ico {
+  font-size: 2rem; line-height: 1; flex-shrink: 0;
+  width: 54px; height: 54px; border-radius: 12px;
+  background: var(--accent-g); display: flex; align-items: center; justify-content: center;
+}
+.edu-d { flex: 1; }
+.edu-d-deg { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+.edu-d-inst { font-size: .85rem; color: var(--text2); margin-bottom: 6px; }
+.edu-d-meta {
+  font-family: var(--mono); font-size: .7rem; color: var(--accent); letter-spacing: .08em;
+}
+.edu-d-cgpa { display: inline-flex; align-items: center; gap: .35rem; margin-top: 8px; }
+.cgpa-star { color: var(--amber); font-size: .9rem; }
+
+/* ─── AWARDS ──────────────────────────────────────────── */
+.awards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.2rem; }
+.award-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--r2); padding: 1.6rem;
+  display: flex; align-items: flex-start; gap: 1rem;
+  transition: border-color .2s, transform .2s;
+}
+.award-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+.award-ico {
+  font-size: 1.5rem; flex-shrink: 0;
+  width: 48px; height: 48px; border-radius: 10px;
+  background: var(--accent-g); display: flex; align-items: center; justify-content: center;
+}
+.award-ttl { font-size: .95rem; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+.award-meta { font-family: var(--mono); font-size: .68rem; color: var(--accent); margin-bottom: 6px; letter-spacing: .07em; }
+.award-desc { font-size: .83rem; color: var(--text2); line-height: 1.65; }
+
+/* ─── CONTACT ─────────────────────────────────────────── */
+.contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+.contact-h {
+  font-family: var(--display); font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800; color: var(--text); line-height: 1.05;
+  letter-spacing: -.03em; margin-bottom: 1.2rem;
+}
+.contact-body { font-size: .95rem; color: var(--text2); line-height: 1.9; margin-bottom: 2rem; }
+.contact-info-row {
+  font-family: var(--mono); font-size: .83rem; color: var(--text2); margin-bottom: 2.5rem;
+}
+.contact-info-row a { color: var(--text2); text-decoration: none; }
+.contact-info-row a:hover { color: var(--accent); }
+.clinks { display: flex; flex-direction: column; gap: .7rem; }
+.clink {
+  display: flex; align-items: center; gap: 1rem;
+  padding: .9rem 1.3rem; background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: var(--r);
+  text-decoration: none; color: var(--text);
+  transition: border-color .2s, color .2s, transform .2s;
+}
+.clink:hover { border-color: var(--accent); color: var(--accent); transform: translateX(5px); }
+.clink-ico {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: var(--bg); display: flex; align-items: center;
+  justify-content: center; font-size: .95rem; flex-shrink: 0; border: 1px solid var(--border-hi);
+}
+.clink-lbl { font-family: var(--mono); font-size: .65rem; color: var(--text3); letter-spacing: .08em; text-transform: uppercase; }
+.clink-val { font-size: .88rem; }
+.contact-right { display: flex; flex-direction: column; gap: 1rem; }
+.quote-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--r2); padding: 2.2rem;
+}
+.quote-card blockquote {
+  font-family: 'Georgia', serif;
+  font-size: 1.25rem; font-style: italic; color: var(--text);
+  line-height: 1.65; margin-bottom: 1.1rem;
+}
+.quote-card cite { font-family: var(--mono); font-size: .68rem; color: var(--text3); letter-spacing: .1em; }
+.open-card {
+  background: rgba(52,211,153,.05); border: 1px solid rgba(52,211,153,.22);
+  border-radius: var(--r2); padding: 1.5rem;
+}
+.open-lbl {
+  font-family: var(--mono); font-size: .68rem; font-weight: 600;
+  color: var(--green); letter-spacing: .14em; text-transform: uppercase;
+  margin-bottom: .9rem; display: flex; align-items: center; gap: .4rem;
+}
+.open-lbl::before { content: "●"; animation: blink 2s infinite; }
+.open-list { list-style: none; display: flex; flex-direction: column; gap: .45rem; }
+.open-list li { font-size: .86rem; color: var(--text2); display: flex; align-items: center; gap: .55rem; }
+.open-list li::before { content: "✓"; color: var(--green); font-weight: 700; font-size: .8rem; }
+
+/* ─── FOOTER ──────────────────────────────────────────── */
+footer {
+  padding: 1.8rem 4rem; border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-brand { font-family: var(--display); font-weight: 700; color: var(--text2); font-size: .95rem; }
+.footer-note { font-family: var(--mono); font-size: .72rem; color: var(--text3); }
+.back-top {
+  width: 38px; height: 38px; background: var(--bg-card);
+  border: 1px solid var(--border-hi); border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none; color: var(--text2); font-size: .9rem;
+  transition: border-color .2s, color .2s;
+}
+.back-top:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ─── RESPONSIVE ──────────────────────────────────────── */
+@media(max-width:960px){
+  #nav { padding: 0 1.5rem; }
+  .nav-links { display: none; }
+  .section { padding: 4.5rem 1.5rem; }
+  .about-grid, .contact-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
+  .exp-company-block { flex-direction: column; gap: 1rem; }
+  footer { padding: 1.5rem; flex-wrap: wrap; gap: .6rem; }
+}
+@media(max-width:600px){
+  .hero-stats { gap: 1.5rem 2rem; flex-wrap: wrap; }
+  .hero-name { font-size: 3.2rem; }
+  .btn-talk span { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══════════════════════════════════════════ -->
+<nav id="nav">
+  <a class="logo" href="#hero">JB<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#cases">Case Studies</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+    <a href="#contact" class="btn-talk"><span>Let's </span>Talk</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-grid-bg"></div>
+
+  <div class="hero-eyebrow">Available · Dhaka, Bangladesh</div>
+
+  <div style="font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--text3);letter-spacing:.12em;margin-bottom:.8rem;animation:fadeDown .7s ease .05s both;">
+    Education Counsellor · British Council Certified Agent · UK • AUS • CA • JP
+  </div>
+
+  <h1 class="hero-name">JONAID<br>BIN <span class="hi">SHARIF</span></h1>
+
+  <div class="hero-roles">
+    <span class="role-chip hi">Education Counsellor</span>
+    <span class="role-chip">Study Abroad Specialist</span>
+    <span class="role-chip">British Council Certified</span>
+    <span class="role-chip">CSE Graduate</span>
+    <span class="role-chip">Harvard Aspire Leader</span>
+  </div>
+
+  <p class="hero-tagline">
+    I guide students from <strong>first conversation to university acceptance</strong> — covering admissions, visa documentation, and life-changing study abroad decisions across four continents.
+    <br>Counsellor by calling. Engineer by training.
+  </p>
+
+  <ul class="hero-bullets">
+    <li><span class="bi">🎓</span>International student counselling — UK, Australia, Canada, Japan</li>
+    <li><span class="bi">📋</span>End-to-end admissions management — SOP, documents, visa</li>
+    <li><span class="bi">📈</span>Student recruitment & digital lead generation strategy</li>
+    <li><span class="bi">🏛️</span>Harvard Aspire Leaders Program — strategic & ethical advising</li>
+    <li><span class="bi">🤝</span>95% on-time application submission rate across all managed students</li>
+  </ul>
+
+  <div class="hero-btns">
+    <a href="#cases" class="btn-primary">
+      View My Work
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+    <a href="#contact" class="btn-secondary">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>
+      Get In Touch
+    </a>
+  </div>
+
+  <div class="hero-stats">
+    <div>
+      <div class="hstat-num">95<sup>%</sup></div>
+      <div class="hstat-label">On-Time Submissions</div>
+    </div>
+    <div>
+      <div class="hstat-num">4<sup>+</sup></div>
+      <div class="hstat-label">Destinations Covered</div>
+    </div>
+    <div>
+      <div class="hstat-num">#<span id="cert-count">3</span></div>
+      <div class="hstat-label">Certifications</div>
+    </div>
+    <div>
+      <div class="hstat-num">3.26</div>
+      <div class="hstat-label">CGPA · CSE</div>
+    </div>
+  </div>
+
+  <div class="hero-socials">
+    <a href="https://www.linkedin.com/in/jonaidsharif" target="_blank" class="soc-link">
+      <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
+    <a href="https://sites.google.com/view/jonaidsharif/" target="_blank" class="soc-link">
+      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      Portfolio
+    </a>
+    <a href="mailto:jonaidsharif@gmail.com" class="soc-link">
+      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>
+      Email
+    </a>
+  </div>
+
+  <div class="scroll-hint">Scroll</div>
+</section>
+
+<!-- ═══ ABOUT ══════════════════════════════════════════ -->
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-tag"><span class="sec-tag-num">01</span> About</div>
+      <h2 class="sec-h">Counsellor by calling.<br>Engineer by training.</h2>
+      <p class="sec-sub">Where a technical mind meets a passion for transforming student futures across the globe.</p>
+    </div>
+    <div class="about-grid">
+      <div>
+        <div class="about-body">
+          <p>I'm a Computer Science & Engineering graduate who discovered that the most meaningful algorithms are the ones that match the right student to the right university. What started as technical curiosity became a mission: helping students navigate the complex world of international education with <strong>clarity, confidence, and care.</strong></p>
+          <p>At Connect Japan, I manage every stage of the student journey — from the first counselling session through to visa approval and pre-departure readiness. My CSE background gives me a genuine edge: I use <strong>data-driven strategy and systems thinking</strong> to amplify the deeply personal work of student advising.</p>
+          <p>I'm actively seeking roles with <strong>UK, Australian, New Zealand, or Japanese institutions</strong> where expert counselling meets measurable admissions impact.</p>
+        </div>
+        <div class="about-feats">
+          <div class="feat-row">
+            <div class="feat-ico">🏅</div>
+            <div>
+              <div class="feat-ttl">British Council UK Agent & Counsellor</div>
+              <div class="feat-sub">UK higher education pathways, compliance & ethical advising · Feb 2026</div>
+            </div>
+          </div>
+          <div class="feat-row">
+            <div class="feat-ico">🌏</div>
+            <div>
+              <div class="feat-ttl">Australia Counsellor Trained</div>
+              <div class="feat-sub">AQF pathways, Subclass 500 visa, CRICOS providers · Mar 2026</div>
+            </div>
+          </div>
+          <div class="feat-row">
+            <div class="feat-ico">🏛️</div>
+            <div>
+              <div class="feat-ttl">Harvard Aspire Leaders Program</div>
+              <div class="feat-sub">Strategic leadership & ethical advising — HBS case methodology · 2024</div>
+            </div>
+          </div>
+          <div class="feat-row">
+            <div class="feat-ico">💻</div>
+            <div>
+              <div class="feat-ttl">CSE Graduate with Digital Marketing Edge</div>
+              <div class="feat-sub">SEO · LLM / AI Tools · WordPress · Lead Generation · Social Media</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="about-right">
+        <div class="edu-card">
+          <div class="edu-deg">B.Sc. Computer Science & Engineering</div>
+          <div class="edu-inst">International Islamic University Chittagong</div>
+          <div class="edu-meta">CGPA 3.26 / 4.00 · Apr 2020 – Dec 2024</div>
+        </div>
+        <div class="stat-big">
+          <div class="stat-big-num">95%</div>
+          <div class="stat-big-lbl">On-time application submission rate</div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-sm">
+            <div class="stat-sm-num">7+</div>
+            <div class="stat-sm-lbl">Months at Connect Japan</div>
+          </div>
+          <div class="stat-sm">
+            <div class="stat-sm-num">4</div>
+            <div class="stat-sm-lbl">Destinations: UK · AU · CA · JP</div>
+          </div>
+        </div>
+        <div class="stat-sm" style="text-align:center;padding:1.3rem;">
+          <div class="stat-sm-num">3</div>
+          <div class="stat-sm-lbl">Professional Certifications (2024–2026)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SKILLS ══════════════════════════════════════════ -->
+<section class="section" id="skills">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-tag"><span class="sec-tag-num">02</span> Skills</div>
+      <h2 class="sec-h">COUNSELLING ARSENAL</h2>
+      <p class="sec-sub">A skill set shaped by real student outcomes — chosen for empathy, compliance, and measurable recruitment impact.</p>
+    </div>
+    <div class="skills-headline">A dual stack: student guidance expertise · digital strategy · technology literacy</div>
+    <div class="skills-grid">
+      <div class="sk-card">
+        <div class="sk-head">
+          <div class="sk-ico">🎓</div>
+          <div><div class="sk-title">Student Counselling</div><div class="sk-role">Core Expertise</div></div>
+        </div>
+        <div class="sk-tags">
+          <span class="sk-tag">One-to-one Advising</span><span class="sk-tag">Needs Assessment</span>
+          <span class="sk-tag">University Selection</span><span class="sk-tag">Program Matching</span>
+          <span class="sk-tag">SOP Guidance</span><span class="sk-tag">Scholarship Research</span>
+          <span class="sk-tag">Career Alignment</span><span class="sk-tag">Parent Communication</span>
+        </div>
+      </div>
+      <div class="sk-card">
+        <div class="sk-head">
+          <div class="sk-ico">📋</div>
+          <div><div class="sk-title">Admissions & Visa</div><div class="sk-role">Process Management</div></div>
+        </div>
+        <div class="sk-tags">
+          <span class="sk-tag">Application Tracking</span><span class="sk-tag">Document Verification</span>
+          <span class="sk-tag">UK Student Visa</span><span class="sk-tag">AU Subclass 500</span>
+          <span class="sk-tag">Financial Prep</span><span class="sk-tag">Interview Coaching</span>
+          <span class="sk-tag">Pre-departure Support</span><span class="sk-tag">UCAS</span>
+        </div>
+      </div>
+      <div class="sk-card">
+        <div class="sk-head">
+          <div class="sk-ico">📣</div>
+          <div><div class="sk-title">Recruitment & Marketing</div><div class="sk-role">Growth Focus</div></div>
+        </div>
+        <div class="sk-tags">
+          <span class="sk-tag">Lead Generation</span><span class="sk-tag">Conversion Optimization</span>
+          <span class="sk-tag">Social Media</span><span class="sk-tag">Content Creation</span>
+          <span class="sk-tag">Reels / Stories</span><span class="sk-tag">KPI Tracking</span>
+          <span class="sk-tag">SEO Strategy</span><span class="sk-tag">Event Representation</span>
+        </div>
+      </div>
+      <div class="sk-card">
+        <div class="sk-head">
+          <div class="sk-ico">🤝</div>
+          <div><div class="sk-title">Client & Partnerships</div><div class="sk-role">Relationship Management</div></div>
+        </div>
+        <div class="sk-tags">
+          <span class="sk-tag">CRM</span><span class="sk-tag">University Partnerships</span>
+          <span class="sk-tag">Institutional Liaison</span><span class="sk-tag">Stakeholder Engagement</span>
+          <span class="sk-tag">Seminar Facilitation</span><span class="sk-tag">Follow-up Systems</span>
+        </div>
+      </div>
+      <div class="sk-card">
+        <div class="sk-head">
+          <div class="sk-ico">💻</div>
+          <div><div class="sk-title">Digital & Technology</div><div class="sk-role">Technical Edge</div></div>
+        </div>
+        <div class="sk-tags">
+          <span class="sk-tag">WordPress</span><span class="sk-tag">Theme Development</span>
+          <span class="sk-tag">LLM / Gen AI</span><span class="sk-tag">Machine Learning</span>
+          <span class="sk-tag">Data Analysis</span><span class="sk-tag">C++</span>
+          <span class="sk-tag">Technical Support</span>
+        </div>
+      </div>
+      <div class="sk-card">
+        <div class="sk-head">
+          <div class="sk-ico">🧠</div>
+          <div><div class="sk-title">Professional Competencies</div><div class="sk-role">Human-first Advising</div></div>
+        </div>
+        <div class="sk-tags">
+          <span class="sk-tag">Active Listening</span><span class="sk-tag">Ethical Advising</span>
+          <span class="sk-tag">Strategic Decision-making</span><span class="sk-tag">Cross-cultural Comm.</span>
+          <span class="sk-tag">Leadership</span><span class="sk-tag">Empathy</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CASE STUDIES (= Projects equivalent) ══════════ -->
+<section class="section" id="cases">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-tag"><span class="sec-tag-num">03</span> Case Studies</div>
+      <h2 class="sec-h">REAL STUDENTS.<br>REAL IMPACT.</h2>
+      <p class="sec-sub">Counselling outcomes and strategic programmes delivered — serving students across four international destinations.</p>
+    </div>
+    <div class="cases">
+
+      <!-- Case 1 -->
+      <div class="case-card">
+        <div class="case-top">
+          <span>Study Abroad Counselling · Connect Japan</span>
+          <span class="case-top-tag tag-blue">Active Programme</span>
+        </div>
+        <div class="case-body">
+          <h3 class="case-title">INTERNATIONAL STUDENT ADMISSION PIPELINE</h3>
+          <p class="case-sub">🎓 Connect Japan · End-to-End Student Journey Management<br><br>
+            Managed the complete lifecycle of international student admissions — from first inquiry to pre-departure orientation — for students targeting Japan, UK, Europe, and broader Asia. Built and maintained an organized pipeline that consistently delivered on-time submissions and successful university placements.
+          </p>
+          <ul class="case-points">
+            <li>Conducted one-to-one counselling sessions assessing <strong>academic background, financial capacity, and career goals</strong> to match students with the right university and program.</li>
+            <li>Managed complete admissions process: <strong>document verification, SOP guidance, university submission,</strong> and application tracking for each student.</li>
+            <li>Guided students through <strong>visa documentation, financial preparation, and interview coaching</strong> for UK, Japan, and European destinations.</li>
+            <li>Maintained structured communication with <strong>students, parents, and partner institutions</strong> throughout the admissions lifecycle.</li>
+            <li>Built strong, long-term student relationships through clear guidance and reliable counselling support — resulting in referral-driven inquiries.</li>
+          </ul>
+          <div class="case-tech">
+            <span>UK Admissions</span><span>Japan Student Visa</span><span>SOP Writing</span>
+            <span>Document Verification</span><span>CRM Follow-ups</span><span>Pre-departure Prep</span>
+          </div>
+          <div class="case-metrics">
+            <div class="cm">
+              <div class="cm-num">95<sup>%</sup></div>
+              <div class="cm-label">On-time Submissions</div>
+            </div>
+            <div class="cm">
+              <div class="cm-num">4<sup>+</sup></div>
+              <div class="cm-label">Destinations Covered</div>
+              <div class="cm-sub">UK · JP · AU · EU</div>
+            </div>
+            <div class="cm">
+              <div class="cm-num">🎯</div>
+              <div class="cm-label">Placements Achieved</div>
+              <div class="cm-sub">Multiple students</div>
+            </div>
+            <div class="cm">
+              <div class="cm-num">📱</div>
+              <div class="cm-label">Social Media Growth</div>
+              <div class="cm-sub">Posts · Reels · Stories</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case 2 -->
+      <div class="case-card">
+        <div class="case-top">
+          <span>Professional Leadership · Harvard Business School</span>
+          <span class="case-top-tag tag-amber">Completed · 2024</span>
+        </div>
+        <div class="case-body">
+          <h3 class="case-title">HARVARD ASPIRE LEADERS PROGRAM</h3>
+          <p class="case-sub">🏛️ Harvard Business School · Strategic Leadership & Ethical Advising<br><br>
+            Completed a highly selective, globally distributed professional development program using Harvard Business School's world-renowned case study methodology. Applied learnings directly to student counselling practice, institutional communication, and ethical advising standards.
+          </p>
+          <ul class="case-points">
+            <li>Mastered <strong>strategic decision-making frameworks</strong> applicable to student counselling, institutional partnership, and educational leadership.</li>
+            <li>Enhanced <strong>leadership, communication, and ethical advising competencies</strong> through intensive case analysis and peer collaboration.</li>
+            <li>Participated in <strong>global workshops</strong> emphasizing client-centric approaches and professional stakeholder relationship building.</li>
+            <li>Developed a <strong>service-first philosophy</strong> that now underpins every student interaction and counselling session.</li>
+          </ul>
+          <div class="case-tech">
+            <span>HBS Case Methodology</span><span>Strategic Leadership</span><span>Ethical Advising</span>
+            <span>Stakeholder Management</span><span>Global Collaboration</span>
+          </div>
+          <div class="case-metrics">
+            <div class="cm">
+              <div class="cm-num">🌍</div>
+              <div class="cm-label">Global Program</div>
+              <div class="cm-sub">Remote · HBS</div>
+            </div>
+            <div class="cm">
+              <div class="cm-num">7<sup>mo</sup></div>
+              <div class="cm-label">Program Duration</div>
+              <div class="cm-sub">Feb–Sep 2024</div>
+            </div>
+            <div class="cm">
+              <div class="cm-num">🏛️</div>
+              <div class="cm-label">Institution</div>
+              <div class="cm-sub">Harvard University</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EXPERIENCE ══════════════════════════════════════ -->
+<section class="section" id="experience">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-tag"><span class="sec-tag-num">04</span> Experience</div>
+      <h2 class="sec-h">CAREER TIMELINE</h2>
+    </div>
+
+    <div class="exp-company-block">
+      <div>
+        <div class="exp-co-name">CONNECT JAPAN</div>
+        <div class="exp-co-desc">One of Bangladesh's leading study-abroad agencies specializing in Japan, UK, and Asia-Pacific destinations — providing end-to-end student counselling, admissions management, and pre-departure support.</div>
+      </div>
+      <div class="exp-co-meta">📅 7+ Months<br><br>Sep 2025 – Present</div>
+    </div>
+
+    <div class="exp-timeline">
+      <div class="exp-line"></div>
+
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-date">September 2025 – Present</div>
+        <div class="exp-role">Marketing, Sales & Student Support</div>
+        <div class="exp-org">Connect Japan — Study Abroad in Japan · Uttara, Dhaka</div>
+        <div class="exp-badges">
+          <span class="exp-badge tag-blue">Student Counsellor</span>
+          <span class="exp-badge tag-green">Current</span>
+          <span class="exp-badge tag-amber">Social Media</span>
+        </div>
+        <ul class="exp-points">
+          <li>Conduct one-to-one counselling sessions for international programs — assessing academic background, financial capacity, and career goals for students targeting Japan, UK, Europe, and Asia.</li>
+          <li>Manage complete admission process: document verification, SOP guidance, university submission, and application tracking with a 95% on-time rate.</li>
+          <li>Support students with visa documentation, financial preparation, and interview readiness for international destinations.</li>
+          <li>Maintain structured communication with students, parents, and partner institutions throughout the admissions lifecycle.</li>
+          <li>Create and manage social media content — posts, reels, stories — driving measurable increase in student inquiries.</li>
+          <li>Represent Connect Japan at seminars and external events, contributing to weekly KPI targets through lead follow-ups.</li>
+        </ul>
+        <div class="exp-achieve">
+          <div class="exp-achieve-lbl">🏆 Key Achievement</div>
+          <p>Achieved 95% on-time application submission rate through organized tracking systems. Successfully assisted multiple students in securing international university admissions while building strong referral relationships.</p>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-date">January 2024 – April 2025</div>
+        <div class="exp-role">Research Internship — Machine Learning</div>
+        <div class="exp-org">Mahdy Research Academy · Dhaka</div>
+        <div class="exp-badges">
+          <span class="exp-badge tag-blue">Machine Learning</span>
+          <span class="exp-badge tag-amber">Deep Learning</span>
+        </div>
+        <ul class="exp-points">
+          <li>Applied ML algorithms — Random Forests, MLPs, CNNs — to research problems with real-world datasets.</li>
+          <li>Performed data preprocessing, model selection, bias-variance analysis, and systematic error analysis.</li>
+          <li>Built practical understanding of deep learning: convolution, kernels, and backpropagation for training models.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EDUCATION ═══════════════════════════════════════ -->
+<section class="section" id="education">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-tag"><span class="sec-tag-num">05</span> Education</div>
+      <h2 class="sec-h">ACADEMIC BACKGROUND</h2>
+      <p class="sec-sub">A solid CS foundation paired with a passion for people, education, and global opportunity from day one.</p>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-big">
+        <div class="edu-ico">🎓</div>
+        <div class="edu-d">
+          <div class="edu-d-deg">B.Sc. in Computer Science & Engineering</div>
+          <div class="edu-d-inst">International Islamic University Chittagong</div>
+          <div class="edu-d-meta">April 2020 – December 2024</div>
+          <div class="edu-d-cgpa"><span class="cgpa-star">⭐</span> CGPA 3.26 / 4.00</div>
+        </div>
+      </div>
+      <div class="edu-big">
+        <div class="edu-ico">📚</div>
+        <div class="edu-d">
+          <div class="edu-d-deg">Higher Secondary — Science</div>
+          <div class="edu-d-inst">Chittagong Model School and College</div>
+          <div class="edu-d-meta">June 2016 – August 2018</div>
+          <div class="edu-d-cgpa"><span class="cgpa-star">📖</span> Science Stream</div>
+        </div>
+      </div>
+      <div class="edu-big">
+        <div class="edu-ico">🏫</div>
+        <div class="edu-d">
+          <div class="edu-d-deg">Secondary School — Science</div>
+          <div class="edu-d-inst">Daulatpur Multilateral High School</div>
+          <div class="edu-d-meta">February 2011 – June 2016</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ AWARDS / CERTIFICATIONS ════════════════════════ -->
+<section class="section" id="awards">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-tag"><span class="sec-tag-num">06</span> Certifications & Achievements</div>
+      <h2 class="sec-h">ACHIEVEMENTS &<br>AWARDS</h2>
+      <p class="sec-sub">Certified expertise and professional recognition — internationally verified and actively applied.</p>
+    </div>
+    <div class="awards-grid">
+      <div class="award-card">
+        <div class="award-ico">🏅</div>
+        <div>
+          <div class="award-ttl">British Council UK Agent & Counsellor</div>
+          <div class="award-meta">Feb 2026 · British Council</div>
+          <div class="award-desc">In-depth knowledge of UK higher education pathways, compliance standards, ethical student counselling practices, and visa guidance for international students.</div>
+        </div>
+      </div>
+      <div class="award-card">
+        <div class="award-ico">🌏</div>
+        <div>
+          <div class="award-ttl">Australia Counsellor Training</div>
+          <div class="award-meta">Mar 2026 · Official AU Training</div>
+          <div class="award-desc">Australian education system, CRICOS providers, AQF pathways, Subclass 500 visa requirements, and complete pre-departure preparation guidance.</div>
+        </div>
+      </div>
+      <div class="award-card">
+        <div class="award-ico">🏛️</div>
+        <div>
+          <div class="award-ttl">Harvard Aspire Leaders Program</div>
+          <div class="award-meta">Feb–Sep 2024 · Harvard Business School</div>
+          <div class="award-desc">Completed HBS case study methodology program focused on strategic decision-making, leadership, mentoring, and service professionalism.</div>
+        </div>
+      </div>
+      <div class="award-card">
+        <div class="award-ico">📊</div>
+        <div>
+          <div class="award-ttl">Foundations of Project Management</div>
+          <div class="award-meta">Jun 2024 · Google / Coursera</div>
+          <div class="award-desc">Project management skills, roles, responsibilities, and organizational culture applicable across international education environments.</div>
+        </div>
+      </div>
+      <div class="award-card">
+        <div class="award-ico">🤖</div>
+        <div>
+          <div class="award-ttl">Introduction to Generative AI</div>
+          <div class="award-meta">edX Verified Certificate</div>
+          <div class="award-desc">Fundamentals of generative AI, large language models, and practical applications — applied to counselling productivity and content creation.</div>
+        </div>
+      </div>
+      <div class="award-card">
+        <div class="award-ico">🛠️</div>
+        <div>
+          <div class="award-ttl">Technical Support Basics · WordPress Dev</div>
+          <div class="award-meta">edX Verified · Udemy Complete Course</div>
+          <div class="award-desc">Technical support fundamentals and complete WordPress development — powering digital presence and institutional website builds.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ══════════════════════════════════════════ -->
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="contact-wrap">
+      <div>
+        <h2 class="contact-h">LET'S OPEN DOORS<br>FOR YOUR STUDENTS.</h2>
+        <p class="contact-body">
+          Looking for a counsellor who combines genuine student empathy with data-driven admissions strategy? Whether you're a UK institution, an Australian university, or a study-abroad agency — my inbox is always open.
+        </p>
+        <div class="contact-info-row">
+          ✉ <a href="mailto:jonaidsharif@gmail.com">jonaidsharif@gmail.com</a>
+          &nbsp;·&nbsp;
+          📞 <a href="tel:+8801814140242">+880 1814 140242</a>
+          &nbsp;·&nbsp;
+          📍 Dhaka, Bangladesh
+        </div>
+        <div class="clinks">
+          <a href="https://www.linkedin.com/in/jonaidsharif" target="_blank" class="clink">
+            <div class="clink-ico">
+              <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </div>
+            <div><div class="clink-lbl">LinkedIn</div><div class="clink-val">linkedin.com/in/jonaidsharif</div></div>
+          </a>
+          <a href="https://sites.google.com/view/jonaidsharif/" target="_blank" class="clink">
+            <div class="clink-ico">🌐</div>
+            <div><div class="clink-lbl">Portfolio</div><div class="clink-val">sites.google.com/view/jonaidsharif</div></div>
+          </a>
+          <a href="mailto:jonaidsharif@gmail.com" class="clink">
+            <div class="clink-ico">✉</div>
+            <div><div class="clink-lbl">Email</div><div class="clink-val">jonaidsharif@gmail.com</div></div>
+          </a>
+          <a href="tel:+8801814140242" class="clink">
+            <div class="clink-ico">📞</div>
+            <div><div class="clink-lbl">Phone / WhatsApp</div><div class="clink-val">+880 1814 140242</div></div>
+          </a>
+        </div>
+      </div>
+      <div class="contact-right">
+        <div class="quote-card">
+          <blockquote>"Every student deserves guidance that sees their full potential — not just their grades."</blockquote>
+          <cite>— JONAID BIN SHARIF · EDUCATION COUNSELLOR</cite>
+        </div>
+        <div class="open-card">
+          <div class="open-lbl">Currently Open To</div>
+          <ul class="open-list">
+            <li>Education Counsellor — UK / AU / NZ institutions</li>
+            <li>International student recruitment roles</li>
+            <li>Study-abroad agency partnerships</li>
+            <li>Admissions & digital marketing hybrid roles</li>
+            <li>Remote or willing to relocate</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══════════════════════════════════════════ -->
+<footer>
+  <div class="footer-brand">Jonaid Bin Sharif</div>
+  <div class="footer-note">© 2026 · Counselled in Chattogram 🇧🇩</div>
+  <a href="#hero" class="back-top" title="Back to top">↑</a>
+</footer>
+
+<!-- ═══ JS ════════════════════════════════════════════════ -->
+<script>
+// Dark / Light toggle
+const toggle = document.getElementById('theme-toggle');
+toggle.addEventListener('click', () => {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  toggle.textContent = isDark ? '🌙' : '☀️';
+});
+
+// Active nav highlight on scroll
+const sections = document.querySelectorAll('section[id]');
+const navAs = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 90) cur = s.id; });
+  navAs.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
+  });
+}, { passive: true });
+
+// Scroll-reveal: fade-up on enter
+const reveal = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+      reveal.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll(
+  '.sk-card, .case-card, .award-card, .feat-row, .stat-big, .stat-sm, .edu-big, .exp-item, .clink'
+).forEach((el, i) => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(22px)';
+  el.style.transition = `opacity .55s ease ${(i % 6) * 0.07}s, transform .55s ease ${(i % 6) * 0.07}s, border-color .2s, transform .2s`;
+  reveal.observe(el);
+});
+
+// Counter animation for hero stats
+function animateCount(el, target, suffix, duration) {
+  const start = performance.now();
+  const update = (now) => {
+    const p = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    el.innerHTML = Math.round(ease * target) + suffix;
+    if (p < 1) requestAnimationFrame(update);
+  };
+  requestAnimationFrame(update);
+}
+const counters = [
+  { sel: '.hero-stats .hstat-num:nth-child(1) .hnum', val: 95, suf: '%' },
+];
+// Simple entrance trigger for hero stats
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.querySelectorAll('.hstat-num').forEach(el => {
+      el.style.opacity = '1';
+    });
+  }, 900);
+});
+</script>
+</body>
+</html>
