@@ -412,16 +412,33 @@ body {
   padding: .28rem .65rem; background: var(--bg);
   border: 1px solid var(--border-hi); border-radius: 5px; color: var(--text2);
 }
-.case-metrics { display: flex; gap: 2rem; flex-wrap: wrap; padding-top: 1.4rem; border-top: 1px solid var(--border); }
-.cm { text-align: center; min-width: 80px; }
-.cm-num {
-  font-family: var(--display); font-size: 1.7rem;
-  font-weight: 800; color: var(--accent); line-height: 1;
-  display: flex; align-items: baseline; gap: 2px;
+.case-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem; padding-top: 1.4rem;
+  border-top: 1px solid var(--border);
 }
-.cm-num sup { font-size: .9rem; }
-.cm-label { font-family: var(--mono); font-size: .65rem; color: var(--text3); margin-top: 3px; letter-spacing: .06em; }
-.cm-sub { font-size: .72rem; color: var(--text3); margin-top: 1px; }
+.cm {
+  text-align: center;
+  background: var(--bg);
+  border: 1px solid var(--border-hi);
+  border-radius: var(--r);
+  padding: 1.2rem 1rem;
+  transition: border-color .2s, transform .2s;
+}
+.cm:hover { border-color: var(--accent); transform: translateY(-3px); }
+.cm-num {
+  font-family: var(--display); font-size: 2rem;
+  font-weight: 800; color: var(--accent); line-height: 1;
+  display: flex; align-items: baseline; justify-content: center; gap: 2px;
+}
+.cm-num sup { font-size: 1rem; }
+.cm-label {
+  font-family: var(--mono); font-size: .68rem;
+  color: var(--text2); margin-top: 6px;
+  letter-spacing: .06em; text-transform: uppercase;
+}
+.cm-sub { font-size: .75rem; color: var(--text3); margin-top: 4px; }
 
 /* ─── EXPERIENCE ──────────────────────────────────────── */
 .exp-company-block {
