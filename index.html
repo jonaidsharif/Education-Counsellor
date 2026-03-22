@@ -147,9 +147,18 @@ body {
   font-weight: 800; line-height: .95;
   letter-spacing: -.04em; color: var(--text);
   margin-bottom: .6rem;
-  animation: fadeUp .85s ease .1s both;
 }
 .hero-name .hi { color: var(--accent); }
+.hero-name .letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(60px) rotateX(90deg);
+  animation: letterDrop .6s cubic-bezier(.22,.61,.36,1) forwards;
+}
+.hero-name .space { display: inline-block; width: .3em; }
+@keyframes letterDrop {
+  to { opacity: 1; transform: translateY(0) rotateX(0); }
+}
 
 .hero-roles {
   display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem;
@@ -628,7 +637,7 @@ footer {
     Education Counsellor · British Council Certified Agent · UK • AUS • CA • JP
   </div>
 
-  <h1 class="hero-name">JONAID<br>BIN <span class="hi">SHARIF</span></h1>
+  <h1 class="hero-name" id="hero-name-anim">JONAID<br>BIN <span class="hi">SHARIF</span></h1>
 
   <div class="hero-roles">
     <span class="role-chip hi">Education Counsellor</span>
@@ -1250,5 +1259,27 @@ window.addEventListener('load', () => {
   }, 900);
 });
 </script>
+// Letter-by-letter drop animation for hero name
+(function() {
+  const el = document.getElementById('hero-name-anim');
+  const lines = ['JONAID', 'BIN ', 'SHARIF'];
+  let html = '';
+  let globalIndex = 0;
+  lines.forEach((line, li) => {
+    if (li === 1) html += '<br>';
+    if (li === 2) html += '<span class="hi">';
+    for (let i = 0; i < line.length; i++) {
+      if (line[i] === ' ') {
+        html += '<span class="space"></span>';
+      } else {
+        const delay = (0.1 + globalIndex * 0.07).toFixed(2);
+        html += `<span class="letter" style="animation-delay:${delay}s">${line[i]}</span>`;
+        globalIndex++;
+      }
+    }
+    if (li === 2) html += '</span>';
+  });
+  el.innerHTML = html;
+})();
 </body>
 </html>
