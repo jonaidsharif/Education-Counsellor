@@ -393,8 +393,16 @@ body {
 .case-sub { font-size: .88rem; color: var(--text2); margin-bottom: 1.5rem; line-height: 1.7; }
 .case-points { list-style: none; display: flex; flex-direction: column; gap: .55rem; margin-bottom: 1.8rem; }
 .case-points li {
-  display: flex; align-items: flex-start; gap: .7rem;
+  display: block;
   font-size: .9rem; color: var(--text2); line-height: 1.65;
+  padding-left: 1.2rem; position: relative; margin-bottom: .55rem;
+}
+.case-points li::before {
+  position: absolute; left: 0; top: 3px;
+}
+.case-points li strong {
+  font-weight: 600; color: var(--text);
+  display: inline;
 }
 .case-points li strong { color: var(--text); font-weight: 500; }
 .case-points li::before { content: "▸"; color: var(--accent); flex-shrink: 0; font-size: .85rem; margin-top: 3px; }
