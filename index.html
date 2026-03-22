@@ -29,8 +29,8 @@
   --r:         10px;
   --r2:        14px;
   --mono:      'JetBrains Mono', monospace;
-  --sans:      'Outfit', sans-serif;
-  --display:   'Outfit', sans-serif;
+  --sans:      'Inter', sans-serif;
+  --display:   'Syne', sans-serif;
 }
 [data-theme="light"] {
   --bg:        #f4f5f9;
@@ -114,7 +114,6 @@ body {
   align-items: center; justify-content: center;
   text-align: center;
   padding: calc(var(--nav-h) + 3rem) 2rem 3rem;
-  position: relative; overflow: hidden;
 }
 .hero-glow {
   position: absolute; pointer-events: none;
@@ -148,7 +147,6 @@ body {
   font-weight: 800; line-height: .95;
   letter-spacing: -.04em; color: var(--text);
   margin-bottom: .6rem;
-  perspective: 600px;
 }
 .hero-name .hi { color: var(--accent); }
 .hero-name .letter {
@@ -249,7 +247,6 @@ body {
   letter-spacing: .2em; text-transform: uppercase;
   display: flex; flex-direction: column; align-items: center; gap: .5rem;
   animation: fadeIn 1.5s ease 1.2s both;
-  z-index: 0;
 }
 .scroll-hint::after {
   content: ''; width: 1px; height: 40px;
@@ -365,7 +362,7 @@ body {
 }
 .sk-tag:hover { border-color: var(--accent); color: var(--accent); }
 
-/* ─── CASE STUDIES ────────────────────────────────────── */
+/* ─── CASE STUDIES (= Projects) ──────────────────────── */
 .cases { display: flex; flex-direction: column; gap: 2rem; }
 .case-card {
   background: var(--bg-card); border: 1px solid var(--border);
@@ -431,14 +428,18 @@ body {
 .exp-co-desc { font-size: .85rem; color: var(--text2); margin-top: .4rem; max-width: 520px; line-height: 1.7; }
 .exp-co-meta {
   font-family: var(--mono); font-size: .72rem; color: var(--accent);
-  letter-spacing: .1em; white-space: nowrap; text-align: right; flex-shrink: 0;
+  letter-spacing: .1em; white-space: nowrap; text-align: right;
+  flex-shrink: 0;
 }
 .exp-timeline { position: relative; padding-left: 2px; }
 .exp-line {
-  position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 2px;
   background: linear-gradient(to bottom, var(--accent) 60%, transparent);
 }
-.exp-item { position: relative; padding-left: 2.5rem; padding-bottom: 3rem; }
+.exp-item {
+  position: relative; padding-left: 2.5rem; padding-bottom: 3rem;
+}
 .exp-dot {
   position: absolute; left: -6px; top: 8px;
   width: 14px; height: 14px; border-radius: 50%;
@@ -494,7 +495,9 @@ body {
 .edu-d { flex: 1; }
 .edu-d-deg { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 4px; }
 .edu-d-inst { font-size: .85rem; color: var(--text2); margin-bottom: 6px; }
-.edu-d-meta { font-family: var(--mono); font-size: .7rem; color: var(--accent); letter-spacing: .08em; }
+.edu-d-meta {
+  font-family: var(--mono); font-size: .7rem; color: var(--accent); letter-spacing: .08em;
+}
 .edu-d-cgpa { display: inline-flex; align-items: center; gap: .35rem; margin-top: 8px; }
 .cgpa-star { color: var(--amber); font-size: .9rem; }
 
@@ -678,7 +681,7 @@ footer {
       <div class="hstat-label">Destinations Covered</div>
     </div>
     <div>
-      <div class="hstat-num">#3</div>
+      <div class="hstat-num">#<span id="cert-count">3</span></div>
       <div class="hstat-label">Certifications</div>
     </div>
     <div>
@@ -863,7 +866,7 @@ footer {
   </div>
 </section>
 
-<!-- ═══ CASE STUDIES ══════════════════════════════════ -->
+<!-- ═══ CASE STUDIES (= Projects equivalent) ══════════ -->
 <section class="section" id="cases">
   <div class="wrap">
     <div class="sec-head">
@@ -872,6 +875,8 @@ footer {
       <p class="sec-sub">Counselling outcomes and strategic programmes delivered — serving students across four international destinations.</p>
     </div>
     <div class="cases">
+
+      <!-- Case 1 -->
       <div class="case-card">
         <div class="case-top">
           <span>Study Abroad Counselling · Connect Japan</span>
@@ -880,14 +885,14 @@ footer {
         <div class="case-body">
           <h3 class="case-title">INTERNATIONAL STUDENT ADMISSION PIPELINE</h3>
           <p class="case-sub">🎓 Connect Japan · End-to-End Student Journey Management<br><br>
-            Managed the complete lifecycle of international student admissions — from first inquiry to pre-departure orientation — for students targeting Japan, UK, Europe, and broader Asia.
+            Managed the complete lifecycle of international student admissions — from first inquiry to pre-departure orientation — for students targeting Japan, UK, Europe, and broader Asia. Built and maintained an organized pipeline that consistently delivered on-time submissions and successful university placements.
           </p>
           <ul class="case-points">
             <li>Conducted one-to-one counselling sessions assessing <strong>academic background, financial capacity, and career goals</strong> to match students with the right university and program.</li>
             <li>Managed complete admissions process: <strong>document verification, SOP guidance, university submission,</strong> and application tracking for each student.</li>
             <li>Guided students through <strong>visa documentation, financial preparation, and interview coaching</strong> for UK, Japan, and European destinations.</li>
             <li>Maintained structured communication with <strong>students, parents, and partner institutions</strong> throughout the admissions lifecycle.</li>
-            <li>Built strong, long-term student relationships through clear guidance — resulting in referral-driven inquiries.</li>
+            <li>Built strong, long-term student relationships through clear guidance and reliable counselling support — resulting in referral-driven inquiries.</li>
           </ul>
           <div class="case-tech">
             <span>UK Admissions</span><span>Japan Student Visa</span><span>SOP Writing</span>
@@ -917,6 +922,7 @@ footer {
         </div>
       </div>
 
+      <!-- Case 2 -->
       <div class="case-card">
         <div class="case-top">
           <span>Professional Leadership · Harvard Business School</span>
@@ -925,7 +931,7 @@ footer {
         <div class="case-body">
           <h3 class="case-title">HARVARD ASPIRE LEADERS PROGRAM</h3>
           <p class="case-sub">🏛️ Harvard Business School · Strategic Leadership & Ethical Advising<br><br>
-            Completed a highly selective, globally distributed professional development program using Harvard Business School's world-renowned case study methodology.
+            Completed a highly selective, globally distributed professional development program using Harvard Business School's world-renowned case study methodology. Applied learnings directly to student counselling practice, institutional communication, and ethical advising standards.
           </p>
           <ul class="case-points">
             <li>Mastered <strong>strategic decision-making frameworks</strong> applicable to student counselling, institutional partnership, and educational leadership.</li>
@@ -956,6 +962,7 @@ footer {
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -967,6 +974,7 @@ footer {
       <div class="sec-tag"><span class="sec-tag-num">04</span> Experience</div>
       <h2 class="sec-h">CAREER TIMELINE</h2>
     </div>
+
     <div class="exp-company-block">
       <div>
         <div class="exp-co-name">CONNECT JAPAN</div>
@@ -974,8 +982,10 @@ footer {
       </div>
       <div class="exp-co-meta">📅 7+ Months<br><br>Sep 2025 – Present</div>
     </div>
+
     <div class="exp-timeline">
       <div class="exp-line"></div>
+
       <div class="exp-item">
         <div class="exp-dot"></div>
         <div class="exp-date">September 2025 – Present</div>
@@ -999,6 +1009,7 @@ footer {
           <p>Achieved 95% on-time application submission rate through organized tracking systems. Successfully assisted multiple students in securing international university admissions while building strong referral relationships.</p>
         </div>
       </div>
+
       <div class="exp-item">
         <div class="exp-dot"></div>
         <div class="exp-date">January 2024 – April 2025</div>
@@ -1014,6 +1025,7 @@ footer {
           <li>Built practical understanding of deep learning: convolution, kernels, and backpropagation for training models.</li>
         </ul>
       </div>
+
     </div>
   </div>
 </section>
@@ -1057,7 +1069,7 @@ footer {
   </div>
 </section>
 
-<!-- ═══ AWARDS ════════════════════════════════════════ -->
+<!-- ═══ AWARDS / CERTIFICATIONS ════════════════════════ -->
 <section class="section" id="awards">
   <div class="wrap">
     <div class="sec-head">
@@ -1224,7 +1236,21 @@ document.querySelectorAll(
   reveal.observe(el);
 });
 
-// Hero stats entrance
+// Counter animation for hero stats
+function animateCount(el, target, suffix, duration) {
+  const start = performance.now();
+  const update = (now) => {
+    const p = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    el.innerHTML = Math.round(ease * target) + suffix;
+    if (p < 1) requestAnimationFrame(update);
+  };
+  requestAnimationFrame(update);
+}
+const counters = [
+  { sel: '.hero-stats .hstat-num:nth-child(1) .hnum', val: 95, suf: '%' },
+];
+// Simple entrance trigger for hero stats
 window.addEventListener('load', () => {
   setTimeout(() => {
     document.querySelectorAll('.hstat-num').forEach(el => {
@@ -1232,29 +1258,6 @@ window.addEventListener('load', () => {
     });
   }, 900);
 });
-
-// ✅ Letter-by-letter drop animation for hero name — INSIDE script tag
-(function() {
-  const el = document.getElementById('hero-name-anim');
-  const lines = ['JONAID', 'BIN ', 'SHARIF'];
-  let html = '';
-  let globalIndex = 0;
-  lines.forEach((line, li) => {
-    if (li === 1) html += '<br>';
-    if (li === 2) html += '<span class="hi">';
-    for (let i = 0; i < line.length; i++) {
-      if (line[i] === ' ') {
-        html += '<span class="space"></span>';
-      } else {
-        const delay = (0.1 + globalIndex * 0.07).toFixed(2);
-        html += `<span class="letter" style="animation-delay:${delay}s">${line[i]}</span>`;
-        globalIndex++;
-      }
-    }
-    if (li === 2) html += '</span>';
-  });
-  el.innerHTML = html;
-})();
 </script>
 </body>
 </html>
