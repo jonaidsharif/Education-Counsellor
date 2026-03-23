@@ -200,8 +200,11 @@ body {
   display: flex; align-items: flex-start; gap: .75rem;
   font-size: .9rem; color: var(--text2); line-height: 1.6;
 }
-.hero-bullets li .bi { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
-
+.hero-bullets li .bi { 
+  font-size: 1rem; flex-shrink: 0; margin-top: 2px;
+  width: 20px; height: 20px; display: flex; align-items: center; justify-content: center;
+  background: var(--accent-g); border-radius: 5px; padding: 2px;
+}
 .hero-btns {
   display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
   animation: fadeUp .85s ease .56s both;
@@ -441,7 +444,8 @@ body {
 .cm-num {
   font-family: var(--display); font-size: 2rem;
   font-weight: 800; color: var(--accent); line-height: 1;
-  display: flex; align-items: baseline; justify-content: center; gap: 2px;
+  display: flex; align-items: center; justify-content: center; gap: 2px;
+  min-height: 2.2rem;
 }
 .cm-num sup { font-size: 1rem; }
 .cm-label {
@@ -534,8 +538,13 @@ body {
 .edu-d-meta {
   font-family: var(--mono); font-size: .7rem; color: var(--accent); letter-spacing: .08em;
 }
-.edu-d-cgpa { display: inline-flex; align-items: center; gap: .35rem; margin-top: 8px; }
-.cgpa-star { color: var(--amber); font-size: .9rem; }
+.edu-d-cgpa { 
+  display: inline-flex; align-items: center; gap: .4rem; 
+  margin-top: 8px; font-size: .85rem; color: var(--text2);
+  background: var(--bg); border: 1px solid var(--border-hi);
+  padding: .25rem .7rem; border-radius: 50px;
+}
+.cgpa-star { color: var(--amber); font-size: .85rem; line-height: 1; }
 
 /* ─── AWARDS ──────────────────────────────────────────── */
 .awards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.2rem; }
@@ -547,10 +556,24 @@ body {
 }
 .award-card:hover { border-color: var(--accent); transform: translateY(-3px); }
 .award-ico {
-  font-size: 1.5rem; flex-shrink: 0;
+  font-size: 1.4rem; flex-shrink: 0;
   width: 48px; height: 48px; border-radius: 10px;
-  background: var(--accent-g); display: flex; align-items: center; justify-content: center;
+  background: var(--accent-g); 
+  border: 1px solid rgba(74,158,255,.2);
+  display: flex; align-items: center; justify-content: center;
+  transition: transform .2s, background .2s;
 }
+.award-card:hover .award-ico { transform: scale(1.1); background: var(--accent-g); }
+
+.edu-ico {
+  font-size: 1.8rem; flex-shrink: 0;
+  width: 54px; height: 54px; border-radius: 12px;
+  background: var(--accent-g);
+  border: 1px solid rgba(74,158,255,.2);
+  display: flex; align-items: center; justify-content: center;
+  transition: transform .2s;
+}
+.edu-big:hover .edu-ico { transform: scale(1.08); }
 .award-ttl { font-size: .95rem; font-weight: 600; color: var(--text); margin-bottom: 4px; }
 .award-meta { font-family: var(--mono); font-size: .68rem; color: var(--accent); margin-bottom: 6px; letter-spacing: .07em; }
 .award-desc { font-size: .83rem; color: var(--text2); line-height: 1.65; }
@@ -579,8 +602,10 @@ body {
 .clink:hover { border-color: var(--accent); color: var(--accent); transform: translateX(5px); }
 .clink-ico {
   width: 36px; height: 36px; border-radius: 8px;
-  background: var(--bg); display: flex; align-items: center;
-  justify-content: center; font-size: .95rem; flex-shrink: 0; border: 1px solid var(--border-hi);
+  background: var(--accent-g); display: flex; align-items: center;
+  justify-content: center; font-size: .95rem; flex-shrink: 0; 
+  border: 1px solid rgba(74,158,255,.25);
+  color: var(--accent);
 }
 .clink-lbl { font-family: var(--mono); font-size: .65rem; color: var(--text3); letter-spacing: .08em; text-transform: uppercase; }
 .clink-val { font-size: .88rem; }
@@ -628,6 +653,33 @@ footer {
 
 /* ─── RESPONSIVE ──────────────────────────────────────── */
 @media(max-width:960px){
+  /* ─── ICON ANIMATIONS ────────────────────────────────── */
+@keyframes iconPulse {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+.feat-row:hover .feat-ico,
+.sk-card:hover .sk-ico {
+  animation: iconPulse .6s ease;
+}
+.sk-ico {
+  width: 42px; height: 42px; border-radius: 9px;
+  background: var(--accent-g); border: 1px solid rgba(74,158,255,.2);
+  display: flex; align-items: center; justify-content: center; 
+  font-size: 1.2rem; transition: transform .2s;
+}
+```
+
+So it looks like this in order:
+```
+...previous CSS...
+
+/* ─── ICON ANIMATIONS ────────────────────────────────── */  ← ADD HERE
+@keyframes iconPulse { ... }
+
+/* ─── RESPONSIVE ──────────────────────────────────────── */
+@media(max-width:960px){
+...
   #nav { padding: 0 1.5rem; }
   .nav-links { display: none; }
   .section { padding: 4.5rem 1.5rem; }
